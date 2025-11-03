@@ -53,11 +53,6 @@ function RegisterPage() {
 
       await register(values.name, values.email, values.password);
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "회원가입에 실패했습니다.");
-      }
-
       // 회원가입 성공 후 처리
       alert("회원가입에 성공했습니다.");
       router.push("/login");
