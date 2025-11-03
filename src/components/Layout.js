@@ -40,7 +40,7 @@ export function FullLayout({ children }) {
   const router = useRouter();
 
   function handleClickBack() {
-    router.back();
+    router.push("/");
   }
 
   return (
