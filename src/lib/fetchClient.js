@@ -26,14 +26,7 @@ export const defaultFetch = async (url, options = {}) => {
     throw new Error(`API error: ${response.status}`);
   }
 
-  // 응답 본문이 있는지 확인
-  const contentType = response.headers.get("content-type");
-  if (contentType && contentType.includes("application/json")) {
-    return response.json();
-  }
-
-  // 본문이 없거나 JSON이 아닌 경우 응답 객체 자체 반환
-  return { status: response.status, ok: response.ok };
+  return response.json();
 };
 
 /**

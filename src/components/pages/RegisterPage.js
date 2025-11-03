@@ -8,6 +8,7 @@ import Button from "../Button";
 import Link from "next/link";
 import HorizontalRule from "../HorizontalRule";
 import styles from "./RegisterPage.module.css";
+import { useAuth } from "@/providers/AuthProvider";
 
 function RegisterPage() {
   const [values, setValues] = useState({
@@ -18,6 +19,7 @@ function RegisterPage() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { register } = useAuth();
   const router = useRouter();
 
   function handleChange(e) {
@@ -49,20 +51,7 @@ function RegisterPage() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(
-        "https://learn.codeit.kr/api/link-service/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: values.name,
-            email: values.email,
-            password: values.password,
-          }),
-        },
-      );
+      await register(values.name, values.email, values.password);
 
       if (!response.ok) {
         const errorData = await response.json();
