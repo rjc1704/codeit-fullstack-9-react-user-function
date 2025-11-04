@@ -21,6 +21,7 @@ export function PublicNav() {
 
 function Nav() {
   const { user, logout } = useAuth();
+
   return (
     <header className={styles.Container}>
       <nav className={styles.Nav}>

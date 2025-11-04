@@ -22,6 +22,7 @@ export const useAuth = () => {
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const getUser = async () => {
     try {
@@ -30,6 +31,8 @@ export default function AuthProvider({ children }) {
     } catch (error) {
       console.error("사용자 정보를 가져오는데 실패했습니다:", error);
       setUser(null);
+    } finally {
+      setIsInitialized(true);
     }
   };
 
@@ -54,14 +57,14 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     setTimeout(() => {
-      if (user) {
-        getUser();
-      }
+      getUser();
     }, 0);
-  }, [user]);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, updateUser, register }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, updateUser, register, isInitialized }}
+    >
       {children}
     </AuthContext.Provider>
   );
