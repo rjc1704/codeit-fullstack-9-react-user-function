@@ -84,10 +84,11 @@ function LoginPage() {
         <HorizontalRule className={styles.HorizontalRule}>또는</HorizontalRule>
         <Button
           className={styles.GoogleButton}
+          onClick={() => {
+            window.location.href = "http://localhost:3000/api/auth/google";
+          }}
           type="button"
           appearance="outline"
-          as="a"
-          href="https://learn.codeit.kr/api/link-service/auth/google"
         >
           <img src="/images/google.svg" alt="Google" />
           구글로 시작하기

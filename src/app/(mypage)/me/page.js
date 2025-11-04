@@ -64,7 +64,7 @@ export default function MyPage() {
             <div className={styles.Name}>{user.name}</div>
             <div className={styles.Email}>{user.email}</div>
           </div>
-          <Button disabled={true} className={styles.EditButton}>
+          <Button className={styles.EditButton} as={Link} href="/me/edit">
             편집
           </Button>
         </Card>

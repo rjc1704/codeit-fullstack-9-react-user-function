@@ -21,15 +21,17 @@ export default function EditPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
-      const { avatar, name, email, bio } = user;
-      setValues({
-        avatar: avatar || "",
-        name: name || "",
-        email: email || "",
-        bio: bio || "",
-      });
-    }
+    setTimeout(() => {
+      if (user) {
+        const { avatar, name, email, bio } = user;
+        setValues({
+          avatar: avatar || "",
+          name: name || "",
+          email: email || "",
+          bio: bio || "",
+        });
+      }
+    }, 0);
   }, [user]);
 
   function handleChange(name, value) {
