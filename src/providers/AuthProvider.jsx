@@ -54,11 +54,9 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     setTimeout(() => {
-      if (user) {
-        getUser();
-      }
+      getUser();
     }, 0);
-  }, [user]);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, login, logout, updateUser, register }}>
